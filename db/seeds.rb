@@ -9,7 +9,12 @@
 
 require 'faker'
 
-
+PrivateMessage.destroy_all
+Post.destroy_all
+Tag.destroy_all
+Gossip.destroy_all
+User.destroy_all
+City.destroy_all
 
 # - Je crée mes villes
 10.times do |index|

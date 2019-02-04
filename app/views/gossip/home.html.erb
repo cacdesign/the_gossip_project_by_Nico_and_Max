@@ -1,5 +1,5 @@
 <h1>Liste Gossips </h1>
-<p>Ceci c'est notre super site de potins, il est chouette, non ?</p>
+<p>Ceci cest notre super site de potins, il est chouette, non ?</p>
 
 
 <table class="table">
@@ -17,7 +17,7 @@
 				<th scope="row"><%= index + 1 %></th>
 			      <td><%= gossip.title %></td>
 			      <td><%= gossip.content %></td>
-			      <td><a href="/gossips/<%= index + 1 %>/show/">Voir le détail</a></td>
+			      <td><%= link_to "See Gossip", gossip_path(gossip.id) %>
     </tr>
    	<% end %>
   </tbody>

@@ -15,9 +15,12 @@ def home
 	@gossips = Gossip.all
 	 puts '€'*60
 	 @gossips.each do |gossip|
-		puts gossip.title
+    puts gossip.title
+   # @gossip_id=gossip.id
+   # puts gossip_id
 	end
-	 puts '€'*60
+   puts '€'*60
+  
 end
 
 def detail
