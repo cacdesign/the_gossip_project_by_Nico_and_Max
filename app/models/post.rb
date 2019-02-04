@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
-	belongs_to :gossip
-	belongs_to :tag
+belongs_to :tag
+belongs_to :gossip
 end

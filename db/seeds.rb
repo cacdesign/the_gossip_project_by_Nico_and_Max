@@ -19,7 +19,7 @@ end
 
 # - Je crée mes users
 10.times do |index|
-	u = User.create(last_name: Faker::Name.last_name, first_name: Faker::Name.first_name, city: City.all.sample, age: rand(20..70))
+	u = User.create(last_name: Faker::Name.last_name, first_name: Faker::Name.first_name, description: Faker::Shakespeare.hamlet_quote,email: Faker::Internet.email,city: City.all.sample, age: rand(20..70))
 	p "L'utilisateur #{u.last_name} de #{u.age}ans a été crée"
 end
 
