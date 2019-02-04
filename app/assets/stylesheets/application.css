@@ -18,3 +18,11 @@
      font-size : 20px;
      color:green;
  }
+
+ body {
+ 	padding : 0px 20px 20px 20px;
+ }
+
+.img_style {
+	width : 600px;
+} 

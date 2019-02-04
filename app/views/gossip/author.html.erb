@@ -1,19 +1,28 @@
 <h1>Our author</h1>
 
 
+ <p><strong>Prénom : </strong><%= @author.first_name %></p>
+ <p><strong>Nom : </strong><%= @author.last_name %></p>
+ <p><strong>Email : </strong><%= @author.email %></p>
+ <p><strong>Description : </strong><%= @author.description %></p>
+ <p><strong>Age : </strong><%= @author.age %></p>
 
-  
- <p><%= @author.first_name %></p>
- <p><%= @author.last_name %></p>
- <p><%= @author.email %></p>
- <p><%= @author.description %></p>
- <p><%= @author.age %></p>
+ <h2>Voici les autres gossips de <%= @author.first_name %> <%= @author.last_name %> : </h2>
+ 
 
-  
+<div class="row">
+
   <% @author.gossips.each do |gossip| %>
-
-			      <p><%= gossip.title %></p>
-			      <p><%= gossip.content %></p>
-
-  <% end %>
-
+ 
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= gossip.title %></h5>
+        <p class="card-text"><%= gossip.content %></p>
+        <%= link_to "See Gossip", gossip_path(gossip.id), class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  
+  <%end%>
+</div>
