@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe City, type: :model do
 
   before(:each) do 
-    @city = City.create(name: "Town_1")
+    @city = FactoryBot.create(:city)
   end
 
   context "validation" do

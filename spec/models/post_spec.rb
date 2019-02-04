@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Post, type: :model do
 
   before(:each) do 
-    @user = FactoryBot.create(:user)
+    @post = FactoryBot.create(:post)
   end
 
   context "validation" do
 
     it "is valid with valid attributes" do
-      expect(@user).to be_a(User)
-      expect(@user).to be_valid
+      expect(@post).to be_a(Post)
+      expect(@post).to be_valid
     end
 
     it "should return a string" do
-        expect(@user.first_name).to be_a(String)
+        expect(@post.tag.title).to be_a(String)
     end
 #OK
 
