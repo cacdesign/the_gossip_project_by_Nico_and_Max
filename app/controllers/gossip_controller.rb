@@ -24,7 +24,17 @@ def detail
 @id=params[:id]
 
 @gossip_detail=Gossip.find(@id)
-puts @gossip_detail.user
+
+@author_id = @gossip_detail.user.id
+
+
+end
+
+def author
+@id=params[:id]
+
+@author=User.find(@id)
+
 
 end
 
