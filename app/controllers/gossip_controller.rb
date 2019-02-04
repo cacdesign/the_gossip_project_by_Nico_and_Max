@@ -19,4 +19,13 @@ def home
 	end
 	 puts '€'*60
 end
+
+def detail
+@id=params[:id]
+
+@gossip_detail=Gossip.find(@id)
+puts @gossip_detail.user
+
+end
+
 end
