@@ -10,4 +10,13 @@ def welcome
   puts @first_name
   puts '€'*60
 end
+
+def home
+	@gossips = Gossip.all
+	 puts '€'*60
+	 @gossips.each do |gossip|
+		puts gossip.title
+	end
+	 puts '€'*60
+end
 end
