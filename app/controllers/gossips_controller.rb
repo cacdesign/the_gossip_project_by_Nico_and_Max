@@ -26,12 +26,14 @@ class GossipsController < ApplicationController
         @gossip = Gossip.new(title: params["gossip_title"], content: params["gossip_content"] , user: User.all.sample)  
 
        if @gossip.save # essaie de sauvegarder en base @gossip
-        redirect_to gossips_path, success: "Article modifié avec succès"
+        flash[:success] = "Well done MF"
+        redirect_to gossips_path
         
       else
        # render new_gossip_path
+       flash[:error] = "Remplis moi ce formulaire Feignasse"
        render 'new'
-       
+      
       end
 
        

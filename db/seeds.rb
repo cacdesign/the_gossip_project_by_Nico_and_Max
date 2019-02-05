@@ -48,19 +48,3 @@ end
 	post = Post.create(gossip: Gossip.all.sample, tag: Tag.all.sample)
 	p "Un post a été crée avec le gossip #{post.gossip} et le tag #{post.tag}"
 end
-
-
-# - Je crée mes privatemessages
-10.times do |index|
-	pm = PrivateMessage.create(content: Faker::HarryPotter.quote, sender: User.all.sample, receiver: User.all.sample)
-	p "Le message privé #{pm.content} a été envoyé entre #{pm.sender.last_name} et #{pm.receiver.last_name}"
-end
-
-
-=begin
-# - Je crée mes appointments
-10.times do |index|
-	a = Appointment.create(date: Faker::Date.between(20.days.ago, Date.today), doctor: Doctor.all.sample, patient: Patient.all.sample, city: City.all.sample)
-	p "L'Appointment #{a.date} avec le docteur #{a.doctor.last_name} et le patient #{a.patient.last_name} a été crée"
-end
-=end
