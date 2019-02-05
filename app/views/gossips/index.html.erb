@@ -12,12 +12,10 @@
       <div class="card-body">
         <h5 class="card-title"><%= gossip.title %></h5>
         <p class="card-text"><%= gossip.content %></p>
-        <%= link_to "See Gossip", gossips_path(gossip.id), class:"btn btn-primary" %>
+        <%= link_to "See Gossip", gossip_path(gossip), class:"btn btn-primary" %>
       </div>
     </div>
   </div>
   
   <%end%>
 </div>
-
-
