@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get 'gossip/author/:id', to: 'gossip#author', as: "gossip_author"
   root 'gossip#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+resources :gossips
 end

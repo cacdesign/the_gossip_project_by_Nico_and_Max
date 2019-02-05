@@ -1,0 +1,23 @@
+<h1>Liste Gossips </h1>
+<p>Ceci cest notre super site de potins, il est chouette, non ?</p>
+
+
+
+<div class="row">
+
+<% @gossips.each_with_index do |gossip, index| %>
+ 
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= gossip.title %></h5>
+        <p class="card-text"><%= gossip.content %></p>
+        <%= link_to "See Gossip", gossips_path(gossip.id), class:"btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  
+  <%end%>
+</div>
+
+
