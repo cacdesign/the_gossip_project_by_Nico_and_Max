@@ -2,17 +2,21 @@ class GossipsController < ApplicationController
 
     def index
         # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
-        @gossips = Gossip.all
+        @gossips = Gossip.all.order("created_at ASC")
+
     end
     
       def show
         # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
 
+
         @gossip=Gossip.find(params[:id])
 
         @author_id = @gossip.user.id 
 
-        @comments=@gossip.comments
+
+        @comments=@gossip.comments.order("created_at ASC")
+        
 
         @city_id=@gossip.user.city
 

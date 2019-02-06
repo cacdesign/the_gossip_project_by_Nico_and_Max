@@ -1,2 +1,17 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<h1> Comment edition </h1>
+
+
+<%= form_for @comment, url: gossip_comment_path(@gossip), html: {method: "patch"} do |f| %>
+   
+<div class="form-group">
+    <label> Comment Content</label>
+    <%= f.text_area :content , class:'form-control'%>
+</div>
+
+<div class="form-group">
+    <button type="submit" class="btn btn-primary" > Edit Comment </button>
+   
+</div>
+  
+
+  <% end %>
