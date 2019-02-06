@@ -13,7 +13,7 @@ class GossipsController < ApplicationController
         @author_id = @gossip.user.id 
 
         @comments=@gossip.comments
-        
+
         @city_id=@gossip.user.city
     end
     
@@ -70,9 +70,5 @@ class GossipsController < ApplicationController
       end
 
 
-def welcome
-    @first_name=params[:first_name]
-
-  end
 end
 
