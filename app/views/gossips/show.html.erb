@@ -5,3 +5,4 @@
  <p><%= @gossip.user.first_name %> <%= @gossip.user.last_name %></p>
  <%= link_to "Voir la fiche de l'auteur", author_path(@author_id), class:"btn btn-primary"%>
   <%= link_to "Edit Gossip", edit_gossip_path(@gossip), class:"btn btn-info" %>
+  <%= link_to "Supprimer Gossip", gossip_path(@gossip), class:"btn btn-danger", method:"DELETE" %>

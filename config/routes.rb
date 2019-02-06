@@ -11,6 +11,6 @@ Rails.application.routes.draw do
 
   resources :gossips 
   resources :authors, only: [:show]
-  resources :cities
+  resources :cities, only: [:show]
 
 end
