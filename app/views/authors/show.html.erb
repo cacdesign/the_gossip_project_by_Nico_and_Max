@@ -6,6 +6,8 @@
  <p><strong>Email : </strong><%= @author.email %></p>
  <p><strong>Description : </strong><%= @author.description %></p>
  <p><strong>Age : </strong><%= @author.age %></p>
+  <p><strong>City : </strong><%= @author.city.name %></p>
+  <%= link_to "Voir la ville de l'auteur", city_path(@city_id) %>
 
  <h2>Voici les autres gossips de <%= @author.first_name %> <%= @author.last_name %> : </h2>
  

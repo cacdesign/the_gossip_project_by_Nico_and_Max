@@ -1,13 +1,13 @@
 class GossipsController < ApplicationController
 
-
     def index
         # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
-        @gossips = Gossip.all.order('created_at DESC')
+        @gossips = Gossip.all
     end
     
       def show
         # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
+
         @gossip=Gossip.find(params[:id])
 
         @author_id = @gossip.user.id 
@@ -15,19 +15,20 @@ class GossipsController < ApplicationController
         @comments=@gossip.comments
 
         @city_id=@gossip.user.city
+
     end
     
-    def new
+      def new
         # Méthode qui crée un potin vide et l'envoie une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
-       
+     
     end
     
       def create
         # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
         # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
         # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
-     
-        @gossip = Gossip.new(title: params["gossip_title"], content: params["gossip_content"] , user: User.all.sample)  
+         @gossip = Gossip.new(title: params["gossip_title"], content: params["gossip_content"] , user: User.all.sample)  
+
 
        if @gossip.save # essaie de sauvegarder en base @gossip
         flash[:success] = "Well done MF"
@@ -59,7 +60,11 @@ class GossipsController < ApplicationController
           flash[:error] = "Remplis moi ce formulaire Feignasse"
           render 'edit'
         end
+
+
       end
+
+      
     
       def destroy
         # Méthode qui récupère le potin concerné et le détruit en base
