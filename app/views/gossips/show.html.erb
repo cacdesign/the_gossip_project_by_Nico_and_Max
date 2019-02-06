@@ -16,15 +16,21 @@
   <br><br>
   <h2>Commentaires</h2>
 
+  <form action= <%= gossip_comments_path(@gossip) %> method="POST">
+      <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+      <input placeholder="Ajouter un comment" type="text" name="comment">
+      <br><br>   
+      <input type="submit" value="Valider">
+  </form>
+
   <%@gossip.comments.each do |comment|%>
     <div style="font-size:12px">
     <strong><%=comment.user.first_name%> </strong> | <span style="color:#e3e3e3"> <%=comment.updated_at%> </span>  <br>
-    <%=comment.content%>
+    <%=comment.content%>  <%= link_to "Edit Gossip", edit_gossip_comment_path(@gossip, comment), class:"btn btn-info" %>
 </div>
     <br><br>
   
  <%end%>
 
-end
 
 

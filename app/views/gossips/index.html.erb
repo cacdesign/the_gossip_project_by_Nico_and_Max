@@ -17,7 +17,7 @@
         <p class="card-text"><%= gossip.content %></p>
         <%= link_to "See Gossip", gossip_path(gossip), class:"btn btn-primary" %>
         <%= link_to "Edit Gossip", edit_gossip_path(gossip), class:"btn btn-info" %>
-
+       <span style="color: #63987c;font-style: bold; padding-left: 13px;"><%=gossip.comments.length%>  Comments</span>
 
       </div>
     </div>
