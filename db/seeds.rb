@@ -9,12 +9,14 @@
 
 require 'faker'
 
+Comment.destroy_all
 PrivateMessage.destroy_all
 Post.destroy_all
 Tag.destroy_all
 Gossip.destroy_all
 User.destroy_all
 City.destroy_all
+
 
 # - Je crée mes villes
 10.times do |index|
@@ -46,5 +48,11 @@ end
 # - Je crée mes posts
 10.times do |index|
 	post = Post.create(gossip: Gossip.all.sample, tag: Tag.all.sample)
-	p "Un post a été crée avec le gossip #{post.gossip} et le tag #{post.tag}"
+	p "Un post a été crée avec le gossip #{post.gossip.title} et le tag #{post.tag.title}"
+end
+
+# - Je crée mes commentaires
+500.times do 
+	comment = Comment.create(content: Faker::Shakespeare.hamlet_quote, user: User.all.sample, gossip: Gossip.all.sample)
+	p "Un commentaire a été crée avec le gossip #{comment.gossip.title} et le user  #{comment.user.first_name}"
 end
