@@ -1,0 +1,10 @@
+<h1>Modifie ton Gossip</h1>
+
+<form action= <%= gossip_path(@id) %> method="PATCH">
+      <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
+      <input placeholder="Mets ton titre" type="text" name="gossip_title">
+      <br><br>
+      <input placeholder="Le contenu de ton potin" type="text" name="gossip_content">
+<br> <br>    
+      <input type="submit" value="Valider">
+</form>

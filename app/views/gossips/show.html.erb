@@ -1,6 +1,9 @@
 <h1>Our Gossip</h1>
 
- <p><%= @gossip_detail.title %></p>
- <p><%= @gossip_detail.content %></p>
- <p><%= @gossip_detail.user.first_name %> <%= @gossip_detail.user.last_name %></p>
- <%= link_to "Voir la fiche de l'auteur", gossip_author_path(@gossip_detail, @author_id) %>
+
+ <p><strong>Titre : </strong><%= @gossip_detail.title %></p>
+ <p><strong>Contenu : </strong><%= @gossip_detail.content %></p>
+ <p><strong>Auteur : </strong><%= @gossip_detail.user.first_name %> <%= @gossip_detail.user.last_name %></p>
+ <p><strong>La ville de l'auteur : </strong><%= @gossip_detail.user.city.name %></p>
+ <%= link_to "Voir la fiche de l'auteur", author_path(@author_id) %>
+ <%= link_to "Voir la ville de l'auteur", city_path(@city_id) %>
