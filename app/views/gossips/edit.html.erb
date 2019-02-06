@@ -1,10 +1,24 @@
-<h1>Modifie ton Gossip</h1>
+<h1> Gossip edition </h1>
 
-<form action= <%= gossip_path(@id) %> method="PATCH">
-      <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
-      <input placeholder="Mets ton titre" type="text" name="gossip_title">
-      <br><br>
-      <input placeholder="Le contenu de ton potin" type="text" name="gossip_content">
-<br> <br>    
-      <input type="submit" value="Valider">
-</form>
+
+<%= form_for @gossip  do |f| %>
+    <div class="form-group">
+    <label>Gossip Title</label>
+    <%= f.text_field :title , class:'form-control'%>
+</div>
+    <br><br>
+
+   
+<div class="form-group">
+    <label> Gossip Content</label>
+    <%= f.text_area :content , class:'form-control'%>
+</div>
+
+<div class="form-group">
+    <button type="submit" class="btn btn-primary" > Edit Gossip</button>
+   
+</div>
+  
+
+  <% end %>
+

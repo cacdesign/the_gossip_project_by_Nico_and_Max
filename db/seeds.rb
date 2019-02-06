@@ -9,6 +9,7 @@
 
 require 'faker'
 
+Comment.destroy_all
 PrivateMessage.destroy_all
 Post.destroy_all
 Tag.destroy_all
@@ -16,15 +17,16 @@ Gossip.destroy_all
 User.destroy_all
 City.destroy_all
 
+
 # - Je crée mes villes
 10.times do |index|
-	c = City.create(name: Faker::Address.city)
+	c = City.create(name: Faker::Address.city, zip_code: "75002" )
 	p "La ville #{c.name} a été créée"
 end
 
 # - Je crée mes users
 10.times do |index|
-	u = User.create(last_name: Faker::Name.last_name, first_name: Faker::Name.first_name, description: Faker::Shakespeare.hamlet_quote,email: Faker::Internet.email,city: City.all.sample, age: rand(20..70))
+	u = User.create(last_name: Faker::Name.last_name, first_name: Faker::Name.first_name, description: Faker::Shakespeare.hamlet_quote, email: Faker::Internet.email,city: City.all.sample, age: rand(20..70))
 	p "L'utilisateur #{u.last_name} de #{u.age}ans a été crée"
 end
 
@@ -46,21 +48,11 @@ end
 # - Je crée mes posts
 10.times do |index|
 	post = Post.create(gossip: Gossip.all.sample, tag: Tag.all.sample)
-	p "Un post a été crée avec le gossip #{post.gossip} et le tag #{post.tag}"
+	p "Un post a été crée avec le gossip #{post.gossip.title} et le tag #{post.tag.title}"
 end
 
-
-# - Je crée mes privatemessages
-10.times do |index|
-	pm = PrivateMessage.create(content: Faker::HarryPotter.quote, sender: User.all.sample, receiver: User.all.sample)
-	p "Le message privé #{pm.content} a été envoyé entre #{pm.sender.last_name} et #{pm.receiver.last_name}"
+# - Je crée mes commentaires
+500.times do 
+	comment = Comment.create(content: Faker::Shakespeare.hamlet_quote, user: User.all.sample, gossip: Gossip.all.sample)
+	p "Un commentaire a été crée avec le gossip #{comment.gossip.title} et le user  #{comment.user.first_name}"
 end
-
-
-=begin
-# - Je crée mes appointments
-10.times do |index|
-	a = Appointment.create(date: Faker::Date.between(20.days.ago, Date.today), doctor: Doctor.all.sample, patient: Patient.all.sample, city: City.all.sample)
-	p "L'Appointment #{a.date} avec le docteur #{a.doctor.last_name} et le patient #{a.patient.last_name} a été crée"
-end
-=end

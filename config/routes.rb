@@ -2,7 +2,6 @@
 
 Rails.application.routes.draw do
 
-  get 'cities/show'
   root 'gossips#index'
 
   get 'static_pages/team'
@@ -10,7 +9,11 @@ Rails.application.routes.draw do
   get 'static_pages/welcome/:first_name', to: 'static_pages#welcome'
   resources :gossips
 
-  resources :gossips
+
+  resources :gossips do
+    resources :comments 
+  end
+
   resources :authors, only: [:show]
   resources :cities, only: [:show]
 
