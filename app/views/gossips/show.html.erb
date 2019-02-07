@@ -26,7 +26,7 @@
   <%@gossip.comments.each do |comment|%>
     <div style="font-size:12px">
     <strong><%=comment.user.first_name%> </strong> | <span style="color:#e3e3e3"> <%=comment.updated_at%> </span>  <br>
-    <%=comment.content%>  <%= link_to "Edit Gossip", edit_gossip_comment_path(@gossip, comment), class:"btn btn-info" %>
+    <%=comment.content%>  <%= link_to "Edit Comment", edit_gossip_comment_path(@gossip, comment), class:"btn btn-info" %>
 </div>
     <br><br>
   
