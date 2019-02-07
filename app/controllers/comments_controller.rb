@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  
+ before_action :authenticate_user, only: [:new, :edit, :update, :create]
   def show
 
     
@@ -53,5 +55,26 @@ class CommentsController < ApplicationController
           flash[:error] = "Remplis moi ce formulaire Feignasse"
           render 'edit'
         end
+  end
+
+
+
+    private
+
+  def authenticate_user
+    unless current_user
+      flash[:error] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
+
+  def owner
+    @gossip=Gossip.find(params[:id])
+
+    unless current_user == @gossip.user
+      flash[:error] = "You're not the owner"
+    end
+      
+
   end
 end
