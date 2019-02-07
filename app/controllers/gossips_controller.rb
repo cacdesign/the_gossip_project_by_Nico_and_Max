@@ -14,8 +14,10 @@ class GossipsController < ApplicationController
 
         @author_id = @gossip.user.id 
 
+
         @comments=@gossip.comments.order("created_at ASC")
         
+
         @city_id=@gossip.user.city
 
     end
@@ -75,7 +77,6 @@ class GossipsController < ApplicationController
       @gossip.destroy
       redirect_to gossips_path
       end
-
 
 
 end

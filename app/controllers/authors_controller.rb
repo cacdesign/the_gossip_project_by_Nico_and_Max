@@ -23,8 +23,10 @@ end
 			flash[:success] = "Well done MF"
 			puts @user.errors
 			redirect_to gossips_path
+			
 		else
 			puts @user.errors
+			flash[:error] = @user.errors.messages
 			render 'new'
 		end
 
