@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+
   root 'gossips#index'
 
   get 'static_pages/team'
@@ -14,7 +15,10 @@ Rails.application.routes.draw do
     resources :comments 
   end
 
-  resources :authors, only: [:show]
+  resources :authors, only: [:show, :new, :create]
   resources :cities, only: [:show]
+
+  resources :sessions, only: [:new, :create, :destroy]
+
 
 end
