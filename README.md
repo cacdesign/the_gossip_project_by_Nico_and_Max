@@ -1,7 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Salut à toi, cher correcteur. 
+
+Voici le lien de notre appli en prod :
+https://major-gossips.herokuapp.com/
+
+Si tu veux tester un utilisateur connecté, tu peux utiliser celui-ci :
+email : ardenabernathy@kihn.io
+mdp : Bonjour
+
+En vous remerciant
+Nico @ Max 
+
+
+
 
 Things you may want to cover:
 
