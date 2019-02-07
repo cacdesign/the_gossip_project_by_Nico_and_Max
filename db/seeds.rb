@@ -26,7 +26,7 @@ end
 
 # - Je crée mes users
 10.times do |index|
-	u = User.create(last_name: Faker::Name.last_name, first_name: Faker::Name.first_name, description: Faker::Shakespeare.hamlet_quote, email: Faker::Internet.email,city: City.all.sample, age: rand(20..70))
+	u = User.create(last_name: Faker::Name.last_name, first_name: Faker::Name.first_name, description: Faker::Shakespeare.hamlet_quote, email: Faker::Internet.email,city: City.all.sample, age: rand(20..70), password:'Bonjour')
 	p "L'utilisateur #{u.last_name} de #{u.age}ans a été crée"
 end
 
@@ -56,3 +56,11 @@ end
 	comment = Comment.create(content: Faker::Shakespeare.hamlet_quote, user: User.all.sample, gossip: Gossip.all.sample)
 	p "Un commentaire a été crée avec le gossip #{comment.gossip.title} et le user  #{comment.user.first_name}"
 end
+
+# - Je crée mes commentaires
+500.times do 
+	like = Like.create(user: User.all.sample, gossip: Gossip.all.sample)
+	p "Un like a été crée avec le gossip #{like.gossip.title} et le user  #{like.user.first_name}"
+end
+
+

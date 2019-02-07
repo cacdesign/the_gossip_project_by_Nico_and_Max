@@ -14,8 +14,7 @@
   <%= link_to "Supprimer Gossip", gossip_path(@gossip), class:"btn btn-danger", method:"DELETE" %>
 	<%= link_to "Like", gossip_likes_path(@gossip), class:"btn btn-danger", method:"POST" %>
 	<%= link_to "Dislike", gossip_like_path(@gossip, @like), class:"btn btn-danger", method:"DELETE" %>
-	<span style="color: #63987c;font-style: bold; padding-left: 13px;"><%=@gossip.likes.length%>  Likes</span>
-
+  <span style="color: #63987c;font-style: bold; padding-left: 13px;"><%=@gossip.likes.length%>  Likes</span>
 
   <br><br>
   <h2>Commentaires</h2>

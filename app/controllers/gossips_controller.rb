@@ -6,6 +6,7 @@ class GossipsController < ApplicationController
         # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
         @gossips = Gossip.all.order("created_at DESC")
 
+
     end
     
       def show
@@ -31,9 +32,12 @@ class GossipsController < ApplicationController
         # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
          @gossip = Gossip.new(title: params["gossip_title"], content: params["gossip_content"] , user: current_user)  
 
-
        if @gossip.save # essaie de sauvegarder en base @gossip
         flash[:success] = "Well done MF"
+        100.times do
+        @like=Like.create(gossip:@gossip, user:@gossip.user)
+        end
+        
         redirect_to gossips_path
         
        else
