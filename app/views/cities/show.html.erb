@@ -19,6 +19,9 @@
 	        <h5 class="card-title"><%= gossip.title %></h5>
 	        <p class="card-text"><%= gossip.content %></p>
 	        <%= link_to "See Gossip", gossip_path(gossip.id), class:"btn btn-primary" %>
+	        <%= link_to "Like", gossip_likes_path(gossip), class:"btn btn-danger", method:"POST" %>
+	        <span style="color: #63987c;font-style: bold; padding-left: 13px;"><%=gossip.likes.length%>  Likes</span>
+
 	      </div>
 	    </div>
 	  </div>

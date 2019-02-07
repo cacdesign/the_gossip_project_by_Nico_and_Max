@@ -9,10 +9,16 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+ 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    
 
-    </head>
+    
+    
 
-
+</head>
 
   <body>
   <header>
@@ -30,21 +36,25 @@
       <li class="nav-item">
       <%= link_to "Contact", static_pages_contact_path, class:"nav-link" %>
       </li>
-     <li class="nav-item">
-      <%= link_to "S'inscrire", new_author_path, class:"nav-link" %>
-      </li>
 
-        <li class="nav-item">
-      <%= link_to "Se connecter", new_session_path, class:"nav-link" %>
-      </li>
    
     <%if current_user%>
     <li class="nav-item">
-    <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete %>
+    <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete, class:"nav-link" %>
       </li>
-    <%end%>  
 
-    
+    <%else%>
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Login
+        </button>
+        <div class="dropdown-menu">
+          <%= link_to "S'inscrire", new_author_path, class:"dropdown-item" %>
+          <%= link_to "Se connecter", new_session_path, class:"dropdown-item" %>
+        </div>
+     <%end%> 
+
     </ul>
 
   </div>

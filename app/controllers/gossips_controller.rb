@@ -1,8 +1,10 @@
 class GossipsController < ApplicationController
+    before_action :authenticate_user, only: [:new, :create]
+    before_action :owner, only: [:edit, :update, :destroy]
 
     def index
         # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
-        @gossips = Gossip.all.order("created_at ASC")
+        @gossips = Gossip.all.order("created_at DESC")
 
     end
     
@@ -11,14 +13,10 @@ class GossipsController < ApplicationController
 
 
         @gossip=Gossip.find(params[:id])
-
         @author_id = @gossip.user.id 
-
-
-        @comments=@gossip.comments.order("created_at ASC")
-        
-
+        @comments=@gossip.comments.order("created_at DESC")
         @city_id=@gossip.user.city
+        @like=@gossip.likes.last
 
     end
     
@@ -31,7 +29,7 @@ class GossipsController < ApplicationController
         # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
         # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
         # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
-         @gossip = Gossip.new(title: params["gossip_title"], content: params["gossip_content"] , user: User.all.sample)  
+         @gossip = Gossip.new(title: params["gossip_title"], content: params["gossip_content"] , user: current_user)  
 
 
        if @gossip.save # essaie de sauvegarder en base @gossip
@@ -77,6 +75,31 @@ class GossipsController < ApplicationController
       @gossip.destroy
       redirect_to gossips_path
       end
+
+
+
+
+
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:error] = "Please log in."
+      redirect_to new_session_path
+    end
+  end
+
+  def owner
+    @gossip=Gossip.find(params[:id])
+
+    unless current_user == @gossip.user
+      flash[:error] = "You're not the owner"
+    end
+      
+
+  end
+
 
 
 end
