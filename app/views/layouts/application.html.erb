@@ -38,6 +38,12 @@
       <%= link_to "Se connecter", new_session_path, class:"nav-link" %>
       </li>
    
+    <%if current_user%>
+    <li class="nav-item">
+    <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete %>
+      </li>
+    <%end%>  
+
     
     </ul>
 

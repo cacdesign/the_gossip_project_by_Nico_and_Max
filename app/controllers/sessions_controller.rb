@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
 
   	#@session=Session.new
@@ -33,6 +34,10 @@ class SessionsController < ApplicationController
 
   end
 
-  def destroy
-  end
+
+  	def destroy
+  		session.delete(:user_id)
+  		redirect_to new_session_path
+  	end
+ 
 end

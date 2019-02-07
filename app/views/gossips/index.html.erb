@@ -2,6 +2,16 @@
   <h1 class="display-4">Liste Gossips </h1>
   <p class="lead">Ceci cest notre super site de potins, il est chouette, non ?</p>
   <hr class="my-4">
+
+
+ <%if current_user%>
+
+  <h2>Bienvenue <%= User.find_by(id: session[:user_id]).first_name %> !</h2>
+ <%end%>  
+
+     
+   
+
   <p>Allez, VASY ! Crée ton premier potin ! <%= link_to "Aqui", new_gossip_path, class:"btn btn-primary" %></p>
 </div>
 
