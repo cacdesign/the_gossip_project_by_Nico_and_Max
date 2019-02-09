@@ -9,17 +9,17 @@
 
 require 'faker'
 
-#Comment.destroy_all
+Comment.destroy_all
 PrivateMessage.destroy_all
-#Post.destroy_all
-#Tag.destroy_all
-#Gossip.destroy_all
-#User.destroy_all
-#City.destroy_all
-#Like.destroy_all
+Post.destroy_all
+Tag.destroy_all
+Gossip.destroy_all
+User.destroy_all
+City.destroy_all
+Like.destroy_all
 
 
-=begin
+
 # - Je crée mes villes
 10.times do |index|
 	c = City.create(name: Faker::Address.city, zip_code: "75002" )
@@ -65,12 +65,13 @@ end
 	p "Un like a été crée avec le gossip #{like.gossip.title} et le user  #{like.user.first_name}"
 end
 
+=begin
 # - Je crée mes privatemessages
 500.times do 
 	pm = PrivateMessage.create(sender: User.all.sample, content: Faker::HowIMetYourMother.quote, receiver: User.all.sample)
 	
 end
-
 =end
+
 
 
