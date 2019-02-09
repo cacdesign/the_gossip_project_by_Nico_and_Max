@@ -1,0 +1,66 @@
+<h1>Private Message</h1>
+
+
+
+ <p><%= link_to "Send New Message", new_private_message_path, class:"btn btn-success" %></p>
+  <br><br>
+<h2> Boite de reception</h2>
+
+<%if current_user %>
+<% @received_messages.each do |pm|%>
+
+
+<div class="card">
+  <div class="card-header">
+  <%=pm.sender.first_name%>     <%= link_to "reply", new_private_message_path, class:"btn btn-primary" %>
+
+ <%= link_to "Supprimer", private_message_path(pm), class:"btn btn-danger", method:"DELETE" %>
+ <%= link_to "See conversation", conversation_path(pm.conversation), class:"btn btn-danger" %>
+     
+        
+  </div>
+
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <%=pm.content%>
+      <footer class="blockquote-footer"><%=pm.created_at%> <cite title="Source Title"><bold>From : </bold><%=pm.sender.email%> </cite></footer>
+    </blockquote>
+  </div>
+</div>
+
+
+<%end%>
+<%end%>
+
+  <br><br>
+    <br><br>
+
+<h2>Boite d'envoi</h2>
+
+<%if current_user %>
+<% @sent_messages.each do |pm|%>
+
+<div class="card">
+  <div class="card-header">
+  <%=pm.receiver.first_name%>
+   <%= link_to "Supprimer", private_message_path(pm), class:"btn btn-danger", method:"DELETE" %>
+  </div>
+
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%=pm.content%></p>
+      <footer class="blockquote-footer"><%=pm.created_at%> <cite title="Source Title"><bold>To : </bold><%=pm.receiver.email%> </cite></footer>
+    </blockquote>
+  </div>
+</div>
+
+
+<%end%>
+<%end%>
+
+
+
+<h2>Conversations</h2>
+
+
+

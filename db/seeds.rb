@@ -9,15 +9,17 @@
 
 require 'faker'
 
-Comment.destroy_all
+#Comment.destroy_all
 PrivateMessage.destroy_all
-Post.destroy_all
-Tag.destroy_all
-Gossip.destroy_all
-User.destroy_all
-City.destroy_all
+#Post.destroy_all
+#Tag.destroy_all
+#Gossip.destroy_all
+#User.destroy_all
+#City.destroy_all
+#Like.destroy_all
 
 
+=begin
 # - Je crée mes villes
 10.times do |index|
 	c = City.create(name: Faker::Address.city, zip_code: "75002" )
@@ -26,7 +28,7 @@ end
 
 # - Je crée mes users
 10.times do |index|
-	u = User.create(last_name: Faker::Name.last_name, first_name: Faker::Name.first_name, description: Faker::Shakespeare.hamlet_quote, email: Faker::Internet.email,city: City.all.sample, age: rand(20..70), password:'Bonjour')
+	u = User.create(last_name: Faker::Name.last_name, first_name: Faker::DragonBall.character , description: Faker::Shakespeare.hamlet_quote, email: Faker::Internet.email,city: City.all.sample, age: rand(20..70), password:'Bonjour')
 	p "L'utilisateur #{u.last_name} de #{u.age}ans a été crée"
 end
 
@@ -62,5 +64,13 @@ end
 	like = Like.create(user: User.all.sample, gossip: Gossip.all.sample)
 	p "Un like a été crée avec le gossip #{like.gossip.title} et le user  #{like.user.first_name}"
 end
+
+# - Je crée mes privatemessages
+500.times do 
+	pm = PrivateMessage.create(sender: User.all.sample, content: Faker::HowIMetYourMother.quote, receiver: User.all.sample)
+	
+end
+
+=end
 
 

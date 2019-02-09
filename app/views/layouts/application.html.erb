@@ -6,6 +6,9 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -42,6 +45,10 @@
     <li class="nav-item">
     <%= link_to "Se déconnecter", session_path(session[:user_id]), method: :delete, class:"nav-link" %>
       </li>
+     
+       <span class="right navbar-text">
+      <%=@current_user.first_name%>
+    </span>
 
     <%else%>
 
@@ -50,16 +57,23 @@
           Login
         </button>
         <div class="dropdown-menu">
-          <%= link_to "S'inscrire", new_author_path, class:"dropdown-item" %>
+          <%= link_to "S'inscrire", new_user_path, class:"dropdown-item" %>
           <%= link_to "Se connecter", new_session_path, class:"dropdown-item" %>
         </div>
      <%end%> 
+
+    <li class="nav-item">
+      <%= link_to "Messages", private_messages_path, class:"nav-link" %>
+      </li>
+
 
     </ul>
 
   </div>
 </nav>
   </header>
+
+
 
   <% flash.each do |key, value| %>
     <div class="<%= flash_class(key) %>">

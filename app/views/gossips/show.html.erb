@@ -9,7 +9,7 @@
  <%= link_to "Voir la ville de l'auteur", city_path(@city_id), class:"btn btn-primary" %>
 
 
- <%= link_to "Voir la fiche de l'auteur", author_path(@author_id), class:"btn btn-primary"%> <br><br>
+ <%= link_to "Voir la fiche de l'auteur", user_path(@user_id), class:"btn btn-primary"%> <br><br>
   <%= link_to "Edit Gossip", edit_gossip_path(@gossip), class:"btn btn-info" %>
   <%= link_to "Supprimer Gossip", gossip_path(@gossip), class:"btn btn-danger", method:"DELETE" %>
 	<%= link_to "Like", gossip_likes_path(@gossip), class:"btn btn-danger", method:"POST" %>
@@ -23,13 +23,13 @@
       <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
       <input placeholder="Ajouter un comment" type="text" name="comment">
       <br><br>   
-      <input type="submit" value="Valider">
+      <input type="submit" value="Valider" class="btn btn-success">
   </form>
-
+<br><br>
   <%@gossip.comments.each do |comment|%>
     <div style="font-size:12px">
     <strong><%=comment.user.first_name%> </strong> | <span style="color:#e3e3e3"> <%=comment.updated_at%> </span>  <br>
-    <%=comment.content%>  <%= link_to "Edit Comment", edit_gossip_comment_path(@gossip, comment), class:"btn btn-info" %>
+    <%=comment.content%>  <%= link_to "Edit Comment", edit_gossip_comment_path(@gossip, comment) %>
 </div>
     <br><br>
   

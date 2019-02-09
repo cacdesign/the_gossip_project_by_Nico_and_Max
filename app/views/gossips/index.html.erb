@@ -4,7 +4,7 @@
   <hr class="my-4">     
    
 
-  <p>Allez, VASY ! Crée ton premier potin ! <%= link_to "Aqui", new_gossip_path, class:"btn btn-primary" %></p>
+  <p>Allez, VASY ! Crée ton premier potin ! <%= link_to "Create New Gossip", new_gossip_path, class:"btn btn-success" %></p>
 </div>
 
 
@@ -13,14 +13,27 @@
 <% @gossips.each_with_index do |gossip, index| %>
  
   <div class="col-sm-4">
-    <div class="card">
+    <div class="card" style="margin-bottom:10px">
       <div class="card-body">
-        <h5 class="card-title"><%= gossip.title %></h5>
-        <p class="card-text"><%= gossip.content %></p>
-        <%= link_to "See Gossip", gossip_path(gossip), class:"btn btn-primary" %>
-        <%= link_to "Edit Gossip", edit_gossip_path(gossip), class:"btn btn-info" %>
-        <%= link_to "Like", gossip_likes_path(gossip), class:"btn btn-danger", method:"POST" %>
-        <%= link_to "Dislike", gossip_like_path(gossip, gossip.likes.last), class:"btn btn-danger", method:"DELETE" %>  
+        <h5 class="card-title"><%= gossip.title %>  
+
+        <%= link_to gossip_likes_path(gossip),  method:"POST" do %>
+        <i class="fas fa-thumbs-up"></i> 
+        <% end %>
+
+        <%= link_to gossip_like_path(gossip, gossip.likes.last),  method:"DELETE" do %>
+        <i class="fas fa-thumbs-down"></i>
+        <% end %>
+        </h5>
+
+        <p class="card-text"><%= gossip.content.first(80) %></p>
+        <%= link_to "See Detail", gossip_path(gossip), class:"btn btn-primary" %>
+        <%= link_to "Edit Gossip", edit_gossip_path(gossip)%>
+      
+       
+       
+
+
 
        
       </div>

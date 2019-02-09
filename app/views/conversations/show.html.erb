@@ -1,0 +1,15 @@
+<p>Voici les messages de la conversation <%=@id%></p>
+
+<% @messages_conversation.each do |message|%>
+	<%if message.sender==current_user %>
+		<div class="alert alert-warning" role="alert">
+	<%	else %>
+		<div style="text-align:right" class="alert alert-info" role="alert">
+	<%end%>
+
+
+ From : <%=message.sender.first_name%><br>
+ <%=message.content%>
+</div>
+
+<%end%>

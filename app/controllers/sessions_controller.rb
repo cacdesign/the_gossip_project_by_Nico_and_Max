@@ -1,41 +1,26 @@
 class SessionsController < ApplicationController
 
-  def new
+	def new
+	end
+	
+	def create
+	user = User.find_by(email: params[:session][:email].downcase)
+	    if user && user.authenticate(params[:session][:password])
+	      log_in user
+	      remember user
+	      flash[:success] = "Authentification Success. Welcome back #{user.first_name}"
+	      redirect_to gossips_path
 
-  	#@session=Session.new
-  end
-
-  def create
-  	  puts post_params= params.require(:session).permit(:email, :password)
-
-	  # cherche s'il existe un utilisateur en base avec l’e-mail
-	  user = User.find_by(email: post_params[:email])
-
-
-	  # on vérifie si l'utilisateur existe bien ET si on arrive à l'authentifier (méthode bcrypt) avec le mot de passe 
-	  if user 
-
-	  	if user.authenticate(	post_params[:password])
-		session[:user_id] = user.id
-	    # redirige où tu veux, avec un flash ou pas
-	     flash[:success] = "Authentification Success. Welcome back #{user.first_name}"
-	    redirect_to gossips_path
-
-	  	else
-
-	    flash.now[:error] = "Mot de pass erroné"
-	    render 'new'
-	  	end
-
-	  else
-	  	flash.now[:error] = "Inscrivez-vous d'abord"
-	    render new_author_path
-	  end
-
-  end
+	      
+	    else
+	      flash.now[:error] = 'Invalid email/password combination'
+	      render 'new'
+	    end
+	end
 
 
   	def destroy
+  		log_out
   		session.delete(:user_id)
   		redirect_to new_session_path
   	end

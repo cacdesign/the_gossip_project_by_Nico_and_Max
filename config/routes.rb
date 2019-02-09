@@ -16,11 +16,12 @@ Rails.application.routes.draw do
     resources :likes
   end
 
-  resources :authors, only: [:show, :new, :create]
+  resources :users, only: [:show, :new, :create]
   resources :cities, only: [:show]
 
   resources :sessions, only: [:new, :create, :destroy]
-  
+  resources :private_messages
+   resources :conversations
 
 
 end

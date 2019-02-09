@@ -14,7 +14,7 @@ class GossipsController < ApplicationController
 
 
         @gossip=Gossip.find(params[:id])
-        @author_id = @gossip.user.id 
+        @user_id = @gossip.user.id 
         @comments=@gossip.comments.order("created_at DESC")
         @city_id=@gossip.user.city
         @like=@gossip.likes.last
@@ -99,6 +99,7 @@ class GossipsController < ApplicationController
 
     unless current_user == @gossip.user
       flash[:error] = "You're not the owner"
+      redirect_to gossips_path
     end
       
 

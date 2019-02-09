@@ -1,0 +1,23 @@
+
+
+
+
+<%= form_for(:private_message, url: private_messages_path, html: {method:'POST'} ) do |f| %>
+    <div class="form-group">
+    <label>Email de votre destinataire</label>
+    <%= f.text_field :receiver , class:'form-control'%>
+	</div>
+    <br><br>
+
+   
+<div class="form-group">
+    <label> Votre message</label>
+      <%= f.text_field :content , class:'form-control', rows:'10' %>
+</div>
+
+<div class="form-group">
+    <button type="submit" class="btn btn-primary" > Envoyer</button>
+   
+</div
+
+<%end%>

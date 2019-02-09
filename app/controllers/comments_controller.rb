@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   
  before_action :authenticate_user, only: [:new, :edit, :update, :create]
+ before_action :commentator, only:[:edit, :update]
   def show
 
     
@@ -23,7 +24,7 @@ class CommentsController < ApplicationController
   	@user = @gossip.user
   	
 
-  	@comment = Comment.new(content: params["comment"], user: @user , gossip: @gossip)  
+  	@comment = Comment.new(content: params["comment"], user: @current_user , gossip: @gossip)  
 
 
        if @comment.save # essaie de sauvegarder en base @gossip
@@ -68,11 +69,13 @@ class CommentsController < ApplicationController
     end
   end
 
-  def owner
-    @gossip=Gossip.find(params[:id])
+  def commentator
+  puts @comment=Comment.find(params[:id])
+  puts  @comment.user
 
-    unless current_user == @gossip.user
+    unless current_user == @comment.user
       flash[:error] = "You're not the owner"
+      redirect_to gossips_path
     end
       
 
